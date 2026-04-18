@@ -7,6 +7,6 @@ services:
       - backend
 
   backend:
-    build: ./backend
+    image: siddarthkashyap/flask-backend:v1
     ports:
       - "5000:5000"
