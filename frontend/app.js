@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 app.post('/submit', async (req, res) => {
     const userData = req.body;
 
-    const backendUrl = process.env.BACKEND_URL || 'http://backend:5000/api/process';
+    const backendUrl = process.env.BACKEND_URL || 'http://flask-backend:5000/api/process';
     try {
         // 'backend' will be the name of the Docker service later
-        const response = await axios.post('backendUrl', userData);
+        const response = await axios.post(backendUrl, userData);
         res.send(`Backend says: ${JSON.stringify(response.data)}`);
     } catch (error) {
         console.error(error);
