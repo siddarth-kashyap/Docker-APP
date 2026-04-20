@@ -13,11 +13,14 @@ app.get('/', (req, res) => {
 // Handle form submission
 app.post('/submit', async (req, res) => {
     const userData = req.body;
+
+    const backendUrl = process.env.BACKEND_URL || 'http://backend:5000/api/process';
     try {
         // 'backend' will be the name of the Docker service later
-        const response = await axios.post('http://backend:5000/api/process', userData);
+        const response = await axios.post('backendUrl', userData);
         res.send(`Backend says: ${JSON.stringify(response.data)}`);
     } catch (error) {
+        console.error(error);
         res.status(500).send("Error connecting to backend");
     }
 });
